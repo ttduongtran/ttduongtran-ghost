@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{@site.lang}}">
+<head>
+
+	{{!-- Document Settings --}}
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	{{!-- Base Meta --}}
+	<title>{{meta_title}}</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	{{!-- Styles'n'Scripts --}}
+	{{!-- <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" /> --}}
+  <link rel="stylesheet" type="text/css" href="{{asset "app/css/bootstrap.min.css"}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset "app/css/uikit-custom.css"}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset "app/css/doc.css"}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset "app/css/app.css"}}" />
+	<link rel="stylesheet" type="text/css" href="{{asset "app/css/custom.css"}}" />
+
+	{{!-- This tag outputs SEO meta+structured data and other important settings --}}
+	{{ghost_head}}
+
+</head>
+<body id="body-app" class="{{body_class}} yb-dark-skin uk-light">
+  
+	<div class="site-wrapper">
+
+		{{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+		{{{body}}}
+
+		{{!-- The footer at the very bottom of the screen --}}
+		<footer class="yb-main-footer-wrapper">
+			<div class="waveHorizontals">
+				<div id="waveHorizontal1" class="waveHorizontal" data-uk-img data-src="assets/app/img/bg/wave1.svg"></div>
+				<div id="waveHorizontal2" class="waveHorizontal" data-uk-img data-src="assets/app/img/bg/wave2.svg"></div>
+				<div id="waveHorizontal3" class="waveHorizontal" data-uk-img data-src="assets/app/img/bg/wave3.svg"></div>
+			</div>
+			<a href="#body-app" class="uk-visible@s yb-totop yb-inner-link" data-uk-totop></a>
+			<div class="yb-main-footer">
+				<div class="uk-container">
+					<div data-uk-grid class="uk-child-width-1-2@s">
+						<div class="uk-margin-remove uk-text-left@s">
+							<a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}
+						</div>
+						<div class="uk-margin-remove uk-text-right@s">
+							<div class="yb-footer-social">
+								{{!-- <a href="{{@site.url}}">Latest Posts</a> --}}
+								{{#if @site.facebook}}<a href="{{facebook_url @site.facebook}}" target="_blank" rel="noopener">Facebook</a>{{/if}}
+								{{!-- {{#if @site.instagram}}<a href="{{instagram_url @site.instagram}}" target="_blank" rel="noopener">Instagram</a>{{/if}} --}}
+								{{#if @site.twitter}}<a href="{{twitter_url @site.twitter}}" target="_blank" rel="noopener">Twitter</a>{{/if}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer><!-- end main footer -->
+	</div>
+
+	{{!-- The big email subscribe modal content --}}
+	{{#if @labs.members}}
+	<div class="subscribe-success-message">
+		<a class="subscribe-close" href="javascript:;"></a>
+		You've successfully subscribed to {{@site.title}}!
+	</div>
+
+	<div id="subscribe" class="subscribe-overlay">
+		<a class="subscribe-close" href="#"></a>
+		<div class="subscribe-overlay-content">
+			{{#if @site.logo}}
+				<img class="subscribe-overlay-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
+			{{/if}}
+			<div class="subscribe-form">
+				<h1 class="subscribe-overlay-title">Subscribe to {{@site.title}}</h1>
+				<p class="subscribe-overlay-description">Stay up to date! Get all the latest & greatest posts delivered straight to your inbox</p>
+				<form data-members-form="subscribe">
+					<div class="form-group">
+						<input class="subscribe-email" data-members-email placeholder="youremail@example.com"
+							autocomplete="false" />
+						<button class="button primary" type="submit">
+							<span class="button-content">Subscribe</span>
+							<span class="button-loader">{{> "icons/loader"}}</span>
+						</button>
+					</div>
+					<div class="message-success">
+						<strong>Great!</strong> Check your inbox and click the link to confirm your subscription.
+					</div>
+					<div class="message-error">
+						Please enter a valid email address!
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{{/if}}
+
+	{{!-- jQuery, required for fitvids --}}
+  <script src="{{asset "app/js/plugins.min.js"}}"></script>
+  <script src="{{asset "app/js/bootstrap.min.js"}}"></script>
+  <script src="{{asset "app/js/app.js"}}"></script>
+
+	{{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
+	{{{block "scripts"}}}
+
+	{{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
+	{{ghost_foot}}
+
+</body>
+</html>
