@@ -1,0 +1,2 @@
+2021-04-08 11:21:09.115 +07 [22712] FATAL:  database files are incompatible with server
+2021-04-08 11:21:09.115 +07 [22712] DETAIL:  The data directory was initialized by PostgreSQL version 12, which is not compatible with this version 13.2.
