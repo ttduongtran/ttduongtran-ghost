@@ -32,7 +32,12 @@
     "lint:test": "eslint -c test/.eslintrc.json --ignore-path test/.eslintignore 'test/**/*.js'",
     "lint": "yarn lint:server && yarn lint:frontend && yarn lint:test",
     "posttest": "yarn lint",
-    "fixmodulenotdefined": "yarn cache clean && cd core/client && rm -rf node_modules tmp dist && yarn && cd ../../"
+    "fixmodulenotdefined": "yarn cache clean && cd core/client && rm -rf node_modules tmp dist && yarn && cd ../../",
+    "build": "npm run build:functions && npm run build:gatsby",
+    "build:gatsby": "gatsby build",
+    "build:functions": "netlify-lambda build src/functions",
+    "develop:functions": "netlify-lambda serve src/functions",
+    "develop": "gatsby develop"
   },
   "engines": {
     "node": "^10.13.0 || ^12.10.0",
