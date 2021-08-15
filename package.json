@@ -83,6 +83,7 @@
     "express-query-boolean": "2.0.0",
     "express-session": "1.17.0",
     "fs-extra": "9.0.0",
+    "gatsby-cli": "^3.11.0",
     "ghost-ignition": "4.1.0",
     "ghost-storage-base": "0.0.4",
     "glob": "7.1.6",
