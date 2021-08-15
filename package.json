@@ -39,10 +39,7 @@
     "develop:functions": "netlify-lambda serve src/functions",
     "develop": "gatsby develop"
   },
-  "engines": {
-    "node": "^12.10.0",
-    "cli": "^1.12.0"
-  },
+
   "dependencies": {
     "@nexes/nql": "0.3.0",
     "@sentry/node": "5.15.4",
